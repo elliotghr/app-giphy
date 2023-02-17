@@ -4,19 +4,22 @@ import getGifs from "../services/getGif";
 import Gif from "./Gif";
 
 const ListOfGifs = () => {
-  const [loading, setLoading] = useState(false);
+  //   const [loading, setLoading] = useState(false);
+  const [gifs, setGifs] = useState({ loading: false, results: [] });
+  //  Guardamos un objeto en el estado del componente
   let { keyword } = useParams();
-  const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    getGifs(keyword).then((res) => setGifs(res));
-    setLoading(false);
-  }, [keyword]);
+    setGifs((actualGifs) => ({ loading: true, results: actualGifs.results }));
+    getGifs(keyword).then((res) =>
+      setGifs({ loading: false, results: gifs.results })
+    );
+    setGifs({ loading: false, results: gifs.results });
+  }, [keyword, gifs.results]);
 
-  if (loading) return <i>Loading</i>;
+  if (gifs.loading) return <i>Loading</i>;
 
-  return gifs.map((el) => (
+  return gifs.results.map((el) => (
     <Gif key={el.id} title={el.title} id={el.id} url={el.url}></Gif>
   ));
 };
