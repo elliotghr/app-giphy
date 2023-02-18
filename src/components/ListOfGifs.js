@@ -14,8 +14,6 @@ const ListOfGifs = () => {
     setLoading(false);
   }, [keyword]);
 
-  if (loading) return <i>Loading</i>;
-
   return gifs.map((el) => (
     <Gif key={el.id} title={el.title} id={el.id} url={el.url}></Gif>
   ));
