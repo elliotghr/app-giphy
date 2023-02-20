@@ -31,3 +31,7 @@ return gifs.map(({ el }) => (
 ```
 
 HTML tomará el último botón dentro de un form como un submit
+
+## CustomHooks
+
+Sirven para reutilizar la lógica y simplificar el código a escribir, lo cual nos deja componentes más limpios y legibles

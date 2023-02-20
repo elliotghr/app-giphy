@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import ListOfGifs from "../components/ListOfGifs";
+import useGifs from "../hooks/useGifs";
 import "./Home.css";
 
 // Array para renderizar los diferentes links
 const POPULAR_GIFS = ["Morty", "Spiderman", "Cookie Monster", "Bayern Munchen"];
 
 const Home = () => {
-  const [keyword, setKeyword] = useState("");
+  let [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  
+  const { loading, gifs } = useGifs(keyword || "panda");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +34,8 @@ const Home = () => {
               value={keyword}
             ></input>
           </form>
+          <h3>Última busqueda </h3>
+          <ListOfGifs gifs={gifs}></ListOfGifs>
           <h3>Los gifs más populares </h3>
           <ul>
             {POPULAR_GIFS.map((el) => (
