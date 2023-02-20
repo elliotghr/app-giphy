@@ -17,12 +17,17 @@ getGifs({ keyword: "morty" }).then((res) => setGifs(res));
 En el componente ListOfGifs.js tenemos lo siguiente
 
 ```js
-  return gifs.map((el) => (
-    <Gif key={el.id} title={el.title} id={el.id} url={el.url}></Gif>
-  ));
+return gifs.map((el) => (
+  <Gif key={el.id} title={el.title} id={el.id} url={el.url}></Gif>
+));
 ```
+
 Lo cual puede ser sustituido por
+
 ```js
 return gifs.map(({ el }) => (
   <Gif key={el.id} title={el.title} id={el.id} url={el.url}></Gif>
 ));
+```
+
+HTML tomará el último botón dentro de un form como un submit

@@ -1,8 +1,8 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
-import ListOfGifs from "./components/ListOfGifs";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Home></Home>}></Route>
             <Route
               path="/search/:keyword"
-              element={<ListOfGifs></ListOfGifs>}
+              element={<SearchResults></SearchResults>}
             ></Route>
             <Route path="/gif/:id" element={<Detail></Detail>}></Route>
           </Routes>
