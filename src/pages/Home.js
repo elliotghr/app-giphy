@@ -8,10 +8,10 @@ import "./Home.css";
 const POPULAR_GIFS = ["Morty", "Spiderman", "Cookie Monster", "Bayern Munchen"];
 
 const Home = () => {
-  let [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  let [keyword, setKeyword] = useState("");
   
-  const { loading, gifs } = useGifs(keyword || "panda");
+  const { loading, gifs } = useGifs();
 
   const handleSubmit = (e) => {
     e.preventDefault();
