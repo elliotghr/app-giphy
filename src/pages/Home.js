@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import Category from "../components/Category";
 import ListOfGifs from "../components/ListOfGifs";
+import TrendigSearches from "../components/TrendigSearches";
 import useGifs from "../hooks/useGifs";
 import "./Home.css";
 
@@ -10,7 +12,7 @@ const POPULAR_GIFS = ["Morty", "Spiderman", "Cookie Monster", "Bayern Munchen"];
 const Home = () => {
   const navigate = useNavigate();
   let [keyword, setKeyword] = useState("");
-  
+
   const { loading, gifs } = useGifs();
 
   const handleSubmit = (e) => {
@@ -36,14 +38,7 @@ const Home = () => {
           </form>
           <h3>Última busqueda </h3>
           <ListOfGifs gifs={gifs}></ListOfGifs>
-          <h3>Los gifs más populares </h3>
-          <ul>
-            {POPULAR_GIFS.map((el) => (
-              <li key={el}>
-                <NavLink to={`/search/${el}`}>Gifs de {el}</NavLink>
-              </li>
-            ))}
-          </ul>
+          <TrendigSearches></TrendigSearches>
         </article>
       </section>
     </div>

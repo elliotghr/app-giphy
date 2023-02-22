@@ -8,7 +8,10 @@ const SearchResults = () => {
   let { keyword } = useParams();
   const { loading, gifs } = useGifs(keyword);
   return (
-    <>{loading ? <Spinner></Spinner> : <ListOfGifs gifs={gifs}></ListOfGifs>}</>
+    <>{loading ? <Spinner></Spinner> : (<>
+    <h3>{keyword}</h3>
+      <ListOfGifs gifs={gifs}></ListOfGifs>
+    </>)}</>
   );
 };
 

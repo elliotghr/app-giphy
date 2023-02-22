@@ -12,7 +12,12 @@ const Detail = () => {
   // Comparamos nuestro array de gifs con el id del gif a consumir
   const { id, title, url } = gifs.find((el) => el.id === keyGif);
   // renderizamos nuestro gif
-  return <Gif title={title} id={id} url={url}></Gif>;
+  return (
+    <div>
+      <h2>{title}</h2>
+      <Gif title={title} id={id} url={url}></Gif>
+    </div>
+  );
 };
 
 export default Detail;
