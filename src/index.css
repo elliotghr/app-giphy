@@ -99,3 +99,7 @@ body {
   margin-top: 1rem;
   text-align: center;
 }
+/*  */
+.list-of-gifs{
+  min-height: 100vh;
+}

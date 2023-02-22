@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Category from "../components/Category";
 import ListOfGifs from "../components/ListOfGifs";
+import LazyTrending from "../components/TrendigSearches";
 import TrendigSearches from "../components/TrendigSearches";
 import useGifs from "../hooks/useGifs";
 import "./Home.css";
@@ -36,9 +37,13 @@ const Home = () => {
               value={keyword}
             ></input>
           </form>
+        </article>
+        <article className="list-of-gifs">
           <h3>Última busqueda </h3>
           <ListOfGifs gifs={gifs}></ListOfGifs>
-          <TrendigSearches></TrendigSearches>
+        </article>
+        <article className="trending">
+          <LazyTrending></LazyTrending>
         </article>
       </section>
     </div>

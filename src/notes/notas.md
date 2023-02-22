@@ -30,8 +30,6 @@ return gifs.map(({ el }) => (
 ));
 ```
 
-HTML tomará el último botón dentro de un form como un submit
-
 ## CustomHooks
 
 Sirven para reutilizar la lógica y simplificar el código a escribir, lo cual nos deja componentes más limpios y legibles
@@ -46,5 +44,6 @@ Es un objeto _mágico_ que tiene React, que puedes utilizar en todos tus compone
 
 ## Notas extra
 
+- HTML tomará el último botón dentro de un form como un submit
 - Los custom hooks no siempre tienen que devolver un array, es una creencia falsa, sin embargo, si se tiene que devolver una colección de objetos es mejor hacerlo en un objeto que en un array, por la versatilidad de manipulación y por la facilidad de acceder a sus props
 - Siempre es mejor extraer los métodos de callback en constantes y no insertarlos en el render, esto es por 2 temas, por legibilidad y por escalabilidad
