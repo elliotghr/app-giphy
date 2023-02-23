@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useNearScreen from "../hooks/useNearScreen";
-import getTrendingSearchTerms from "../services/getTrendingSearchTerms";
-import Category from "./Category";
+// Este es un import estatico, pero al separar la lógica de TrendingSearchesSuspense buscamos un import dinámico
+// import TrendigSearchesSuspense from "./TrendingSearchesSuspense";
 
-const TrendigSearches = () => {
-  const [trends, setTrends] = useState([]);
-
-  useEffect(() => {
-    getTrendingSearchTerms().then(setTrends);
-  }, []);
-
-  return <Category title={"Tendencias"} data={trends}></Category>;
-};
+// Pasamos una función que devuelva el import dinamico del componente que queremos utilizar
+const TrendingSearchesSuspense = React.lazy(() =>
+  import("./TrendingSearchesSuspense")
+);
 
 // Componente que determinará si se muestra el componente de trending o no
 export default function LazyTrending() {
@@ -19,7 +14,9 @@ export default function LazyTrending() {
 
   return (
     <div ref={lazyElement}>
-      {isNearScreen ? <TrendigSearches></TrendigSearches> : null}
+      {isNearScreen ? (
+        <TrendingSearchesSuspense></TrendingSearchesSuspense>
+      ) : null}
     </div>
   );
 }
