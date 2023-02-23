@@ -55,6 +55,17 @@ Es una pequeña bibliotequea que te da una funcionalidad que le falta a tu naveg
 
 Con el Lazy Load no solo evita la llamada de la red si no que cargará el js solo cuando lo necesitemos, separaremos todo el js que cargamos y utilizando react lazy solo hará la petición a la red cuando sea visible, con esto no solo eivtamos una llamada a la red (como en el ejemplo) si no que se evita traer todo el js
 
+## Placeholder con svg
+
+Se pueden traer los placeholder con svg (o también llamados skeletons) tal como lo hace FB o TW, se recomienda esta página
+[placeholder skeleton react](https://skeletonreact.com/)
+
+## Masonry
+
+Masonry es una biblioteca de diseño de cuadrícula de JavaScript. Funciona colocando elementos en una posición óptima en función del espacio vertical disponible, algo así como un albañil colocando piedras en una pared.
+Aún no soportado de manera nativa en todos los navegadores
+[MasonryCanIUse](https://caniuse.com/?search=masonry)
+
 ## Notas extra
 
 - HTML tomará el último botón dentro de un form como un submit
