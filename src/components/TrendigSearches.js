@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import useNearScreen from "../hooks/useNearScreen";
 import getTrendingSearchTerms from "../services/getTrendingSearchTerms";
 import Category from "./Category";
 
@@ -14,30 +15,11 @@ const TrendigSearches = () => {
 
 // Componente que determinará si se muestra el componente de trending o no
 export default function LazyTrending() {
-  const [show, setShow] = useState(false);
-  const lazyElement = useRef();
-  useEffect(() => {
-    const options = {
-      rootMargin: "100px",
-    };
-    const onChange = (entries, observer) => {
-      const el = entries[0];
-      if (el.isIntersecting) {
-        setShow(true);
-        console.log(el);
-        // Desonectamnos el observer para que no se esté renderizando multiples veces después de la primera vez
-        observer.disconnect();
-      }
-    };
-    const observer = new IntersectionObserver(onChange, options);
-    observer.observe(lazyElement.current);
-
-    return () => observer.disconnect();
-  }, []);
+  const { isNearScreen, lazyElement } = useNearScreen();
 
   return (
     <div ref={lazyElement}>
-      {show ? <TrendigSearches></TrendigSearches> : null}
+      {isNearScreen ? <TrendigSearches></TrendigSearches> : null}
     </div>
   );
 }

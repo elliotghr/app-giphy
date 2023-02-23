@@ -43,8 +43,17 @@ Un high order component es una función que devuelve un componente
 Es un objeto _mágico_ que tiene React, que puedes utilizar en todos tus componentes sin necesidad de que se le pase por parametro, por estado, etc. Puedes acceder a él desde cualquier parte de tu arbol de elementos
 
 ## UseRef
-  Nos permite guardar valores que entre renderizados se va a volver inalterable.
-  Current es el valor actual de la referencia
+
+Nos permite guardar valores que entre renderizados se va a volver inalterable.
+Current es el valor actual de la referencia
+
+## Polifill
+
+Es una pequeña bibliotequea que te da una funcionalidad que le falta a tu navegador
+
+## Suspense
+
+Con el Lazy Load no solo evita la llamada de la red si no que cargará el js solo cuando lo necesitemos, separaremos todo el js que cargamos y utilizando react lazy solo hará la petición a la red cuando sea visible, con esto no solo eivtamos una llamada a la red (como en el ejemplo) si no que se evita traer todo el js
 
 ## Notas extra
 
