@@ -42,6 +42,10 @@ Un high order component es una función que devuelve un componente
 
 Es un objeto _mágico_ que tiene React, que puedes utilizar en todos tus componentes sin necesidad de que se le pase por parametro, por estado, etc. Puedes acceder a él desde cualquier parte de tu arbol de elementos
 
+## UseRef
+  Nos permite guardar valores que entre renderizados se va a volver inalterable.
+  Current es el valor actual de la referencia
+
 ## Notas extra
 
 - HTML tomará el último botón dentro de un form como un submit
