@@ -66,6 +66,17 @@ Masonry es una biblioteca de diseño de cuadrícula de JavaScript. Funciona colo
 Aún no soportado de manera nativa en todos los navegadores
 [MasonryCanIUse](https://caniuse.com/?search=masonry)
 
+## Debounce
+
+Limitamos el número de veces que un elemento se pueda llamar.
+Esto significa que si llamamos 800 veces una llamada en x tiempo (900ms por ejemplo), la llamada solo se hará una vez
+
+## useCallback
+
+Es una forma de volver a crear la misma función entre renderizados
+
+Es una mezcla entre useRef y useEffect, guarda una funcipon entre diferentes renderizados pero también acepta un array de dependencias apra que ese callback se actualice cada que esas dependencias cambien, además limitamos la llamada la siguiente página, ya que nuestra función solo se va a actualizar cuando cambie de pagina
+
 ## Notas extra
 
 - HTML tomará el último botón dentro de un form como un submit

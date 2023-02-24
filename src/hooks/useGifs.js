@@ -9,6 +9,7 @@ const useGifs = (keyword = null) => {
   const [page, setPage] = useState(INITIAL_PAGE);
   const [loading, setLoading] = useState(false);
   const [loadingNextPage, setLoadingNextPage] = useState(false);
+  
   // Recuperamos la keyword del local storage
   const keywordToUse =
     keyword || localStorage.getItem("lastKeyword") || "random";
@@ -24,9 +25,8 @@ const useGifs = (keyword = null) => {
   // Efecto que se ejecutará cada que la página cambie
   useEffect(() => {
     if (page === INITIAL_PAGE) return;
-    const LIMIT = 25;
     setLoadingNextPage(true);
-    getGifs(keywordToUse, LIMIT, page).then((nextGifs) => {
+    getGifs(keywordToUse, page).then((nextGifs) => {
       // A set gifs le pasamos en forma de función el estado anterior
       setGifs((prevGifs) => prevGifs.concat(nextGifs));
       setLoadingNextPage(false);

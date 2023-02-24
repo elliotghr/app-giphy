@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useNearScreen(distance = "100px") {
+export default function useNearScreen(distance = "100px", once = true) {
   const [isNearScreen, setIsNearScreen] = useState(false);
   const lazyElement = useRef();
 
@@ -15,13 +15,16 @@ export default function useNearScreen(distance = "100px") {
         // Para dejar de observar un solo elemento si tenemos varios a ovservar
         // observer.unobserve(el);
         // Desonectamnos el observer para que no se esté renderizando multiples veces después de la primera vez
-        observer.disconnect();
+        once && observer.disconnect();
+      } else {
+        // Cuando no intersecte lo pasamos a false para poder detectar de nuevo cuando re intersecte
+        !once && setIsNearScreen(false);
       }
     };
     const observer = new IntersectionObserver(onChange, options);
     observer.observe(lazyElement.current);
 
-    return () => observer.disconnect();
-  }, [lazyElement, distance]);
+    // return () => observer.disconnect();
+  }, [lazyElement, distance, once]);
   return { isNearScreen, lazyElement };
 }

@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import Category from "../components/Category";
+import { useNavigate } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
 import LazyTrending from "../components/TrendigSearches";
-import TrendigSearches from "../components/TrendigSearches";
 import useGifs from "../hooks/useGifs";
 import "./Home.css";
 
 // Array para renderizar los diferentes links
-const POPULAR_GIFS = ["Morty", "Spiderman", "Cookie Monster", "Bayern Munchen"];
+// const POPULAR_GIFS = ["Morty", "Spiderman", "Cookie Monster", "Bayern Munchen"];
 
 const Home = () => {
   const navigate = useNavigate();
   let [keyword, setKeyword] = useState("");
 
-  const { loading, gifs } = useGifs();
+  const { gifs } = useGifs();
 
   const handleSubmit = (e) => {
     e.preventDefault();
