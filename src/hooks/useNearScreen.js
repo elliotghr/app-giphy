@@ -21,7 +21,7 @@ export default function useNearScreen(distance = "100px", once = true) {
         !once && setIsNearScreen(false);
       }
     };
-    const observer = new IntersectionObserver(onChange, options);
+    let observer = new IntersectionObserver(onChange, options);
     observer.observe(lazyElement.current);
 
     // return () => observer.disconnect();

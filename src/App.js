@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import SearchResults from "./pages/SearchResults";
 import Error404 from "./components/Error404";
-import staticContext from "./context/StaticContext";
 import { GifProvider } from "./context/GifContext";
 
 function App() {

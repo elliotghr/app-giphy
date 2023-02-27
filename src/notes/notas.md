@@ -75,7 +75,43 @@ Esto significa que si llamamos 800 veces una llamada en x tiempo (900ms por ejem
 
 Es una forma de volver a crear la misma función entre renderizados
 
-Es una mezcla entre useRef y useEffect, guarda una funcipon entre diferentes renderizados pero también acepta un array de dependencias apra que ese callback se actualice cada que esas dependencias cambien, además limitamos la llamada la siguiente página, ya que nuestra función solo se va a actualizar cuando cambie de pagina
+Es una mezcla entre useRef y useEffect, guarda una funcion entre diferentes renderizados, esto quiere decir que solo se creará cuando se renderice por primera vez el componente y también acepta un array de dependencias para que ese callback se actualice cada que esas dependencias cambien, entonces, esta función solo se va a volver a crear cuando cambien esas dependencias
+En el ejercicio limitamos la llamada la siguiente página, ya que nuestra función solo se va a actualizar cuando cambie de pagina
+
+## Test basico
+
+corriendo el comando npum run test podemos realizar un test de la app (Siempre que esté disponible), en el archivo App.test.js podemos correr el siguiente test para asegurarnos de que sí renderiza nuestra app:
+
+```js
+test("renders without crashing", () => {
+  //
+});
+```
+
+Explicando el código de App.test.js
+
+```js
+// Render renderiza el componente que se pasa
+import { render, screen } from "@testing-library/react";
+// Importamos nuestra app
+import App from "./App";
+
+// Aqui añadimos nuestros test, podemos añadir tantos como queramos
+test("renders without crashing", () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+React-testing-library tiene una forma de hacer querys al DOM, [testing-library](https://testing-library.com/) tiene una serie de metodos para consultar el documento y buscar los elementos, se pueden encontrar de manera sincrona o asincrona, estoas pueden ser por labelText, text, title, testId, etc
+
+En un proyecto real se suelen hacer los siguientes test:
+
+- Más de integración
+- Unitarios
+
+Siempre intentar utilizar el findBy...
 
 ## Notas extra
 
