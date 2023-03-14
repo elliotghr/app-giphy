@@ -113,6 +113,10 @@ En un proyecto real se suelen hacer los siguientes test:
 
 Siempre intentar utilizar el findBy...
 
+## Profiler
+Nos ayuda a saber que sucede con nuestra aplicación, a detectar cambios y ver su compartmiento.
+Un commit significa que ha ocurrido algo dentro del arbol de elementos y se ha generado una accion, que es normalmente un renderrizado)
+
 ## Notas extra
 
 - HTML tomará el último botón dentro de un form como un submit

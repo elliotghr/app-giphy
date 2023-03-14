@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
+import SearchForm from "../components/SearchForm";
 import LazyTrending from "../components/TrendigSearches";
 import useGifs from "../hooks/useGifs";
 import "./Home.css";
@@ -10,31 +11,17 @@ import "./Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
-  let [keyword, setKeyword] = useState("");
-
   const { gifs } = useGifs();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //Generamos un navigate programmatically
+  const handleSubmit = ({ keyword }) => {
     navigate(`/search/${keyword}`);
-  };
-  const handleChange = (e) => {
-    setKeyword(e.target.value);
   };
 
   return (
     <div className="Home">
       <section className="Home-container">
         <article>
-          <form onSubmit={handleSubmit}>
-            <input
-              placeholder="Search a gif here..."
-              onChange={handleChange}
-              type="text"
-              value={keyword}
-            ></input>
-          </form>
+          <SearchForm onSubmit={handleSubmit}></SearchForm>
         </article>
         <article className="list-of-gifs">
           <h3>Última busqueda </h3>
