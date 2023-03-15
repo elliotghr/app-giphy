@@ -114,8 +114,12 @@ En un proyecto real se suelen hacer los siguientes test:
 Siempre intentar utilizar el findBy...
 
 ## Profiler
+
 Nos ayuda a saber que sucede con nuestra aplicación, a detectar cambios y ver su compartmiento.
 Un commit significa que ha ocurrido algo dentro del arbol de elementos y se ha generado una accion, que es normalmente un renderrizado)
+
+Pasar una prop con el spread operator nos generará un "Error" al comparar las propiedades, ya que está comparando la referencia y no el contenido del objeto, eso anula el memo que se tiene en el componente
+Se considera como mala practica pasar las props con el spread operator (...) ya que se está creando un objeto nuevo y esto puede perjudicar al memos
 
 ## Notas extra
 

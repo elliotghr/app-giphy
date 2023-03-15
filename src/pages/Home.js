@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
 import SearchForm from "../components/SearchForm";
@@ -13,9 +13,13 @@ const Home = () => {
   const navigate = useNavigate();
   const { gifs } = useGifs();
 
-  const handleSubmit = ({ keyword }) => {
-    navigate(`/search/${keyword}`);
-  };
+  // Hacemos uso de useCallback para evitar que se creé en cada renderizado
+  const handleSubmit = useCallback(
+    ({ keyword }) => {
+      navigate(`/search/${keyword}`);
+    },
+    [navigate]
+  );
 
   return (
     <div className="Home">

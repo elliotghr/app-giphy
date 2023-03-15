@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "./ListOfGifs.css";
 
@@ -12,4 +12,7 @@ const Gif = ({ title, id, url }) => {
   );
 };
 
-export default Gif;
+// Comparamos las prevProps y las nextProps, si el id de ambas es igual entonces lo memorizamos
+export default memo(Gif, (prevProps, nextProps) => {
+  return prevProps.id === nextProps.id;
+});

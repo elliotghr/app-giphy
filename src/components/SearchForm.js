@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
 const SearchForm = ({ onSubmit }) => {
   let [keyword, setKeyword] = useState("");
@@ -22,4 +22,4 @@ const SearchForm = ({ onSubmit }) => {
   );
 };
 
-export default SearchForm;
+export default memo(SearchForm);
