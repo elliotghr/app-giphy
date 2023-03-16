@@ -1,21 +1,25 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Gif from "../components/Gif";
-import useGobalGif from "../hooks/useGlobalGifs";
+import Spinner from "../components/Spinner";
+import useSingleGif from "../hooks/useSingleGif";
+import useTitle from "../hooks/useSEO";
 
 const Detail = () => {
-  // Hcemos uso del contexto para poder utilizar la busqueda anterior en la pagina Detail
-  const gifs = useGobalGif();
   const { id: keyGif } = useParams();
-  if (gifs.length === 0) return;
+  const navigate = useNavigate();
+  const { gif, isLoading, isError } = useSingleGif({ keyGif });
+  const title = gif ? gif.title : "";
+  useTitle({ title });
 
-  // Comparamos nuestro array de gifs con el id del gif a consumir
-  const { id, title, url } = gifs.find((el) => el.id === keyGif);
-  // renderizamos nuestro gif
+  if (isLoading) return <Spinner></Spinner>;
+  if (isError) return navigate("/404");
+  if (!gif) return;
+
   return (
     <div>
-      <h2>{title}</h2>
-      <Gif title={title} id={id} url={url}></Gif>
+      <h2>{gif.title}</h2>
+      <Gif title={gif.title} id={gif.id} url={gif.url}></Gif>
     </div>
   );
 };

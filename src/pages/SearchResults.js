@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
 import Spinner from "../components/Spinner";
 import useGifs from "../hooks/useGifs";
 import useNearScreen from "../hooks/useNearScreen";
+import useTitle from "../hooks/useSEO";
 // import debounce from "just-debounce-it";
 
 const SearchResults = () => {
@@ -11,6 +12,8 @@ const SearchResults = () => {
   const { loading, gifs, setPage } = useGifs(keyword);
   const { isNearScreen, lazyElement } = useNearScreen("10px", false);
   // const debounceHandleNextPage = useRef();
+  const title = gifs ? `${gifs.length} resultados de ${keyword}` : "";
+  useTitle({ title });
 
   const handleNextPage = useCallback(() => {
     setPage((prevPage) => prevPage + 1);
