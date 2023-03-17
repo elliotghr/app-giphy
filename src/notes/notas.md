@@ -121,7 +121,7 @@ Un commit significa que ha ocurrido algo dentro del arbol de elementos y se ha g
 Pasar una prop con el spread operator nos generará un "Error" al comparar las propiedades, ya que está comparando la referencia y no el contenido del objeto, eso anula el memo que se tiene en el componente
 Se considera como mala practica pasar las props con el spread operator (...) ya que se está creando un objeto nuevo y esto puede perjudicar al memos
 
-## Vercel, qué es y cómo funciona 
+## Vercel, qué es y cómo funciona
 
 Es totalmente gratis, da un dominio HTTPS, deploy continuos con git, métopdo de compresión, es de los creadores de Next js
 
@@ -129,8 +129,29 @@ Con Vercel, los desarrolladores pueden alojar su código en un repositorio Git y
 
 Vercel también proporciona herramientas de colaboración para equipos de desarrollo y características de escalabilidad para manejar grandes cargas de tráfico. Además, su servicio de análisis en tiempo real ayuda a los desarrolladores a monitorear el rendimiento y detectar problemas en sus aplicaciones.
 
-## Notas extra
+## SEO
+
+Tenemos dos librerías recomendadas: React Helmet o React head
+
+React Helmet está bien soportado y es muy usado, sin emabrgo, tiene muchos issues, es más completa, tiene más comunidad
+
+React head es más pequeña, similar a Helmet
+
+Ambos son compatibles con server side rendering
+
+Helmet nos ayuda a tener el seo en componenetes, lo cual lo hace más declarativo y fácil de leer. Se recomienda eliminar cualquier etiqueta que se esté controlando con Helmet
+
+## UseRef
+
+Nos permite guardar un valor entre renderizados de un hook
+
+## crawler de google
+
+Puede ejecutar las funciones del cliente de nuestro Js, tiene soporte con Intersection Observer
+
+## Notes
 
 - HTML tomará el último botón dentro de un form como un submit
 - Los custom hooks no siempre tienen que devolver un array, es una creencia falsa, sin embargo, si se tiene que devolver una colección de objetos es mejor hacerlo en un objeto que en un array, por la versatilidad de manipulación y por la facilidad de acceder a sus props
 - Siempre es mejor extraer los métodos de callback en constantes y no insertarlos en el render, esto es por 2 temas, por legibilidad y por escalabilidad
+- Los customHooks deben regresar (de preferencia) solo lógica, no deben regresar elementos JSX

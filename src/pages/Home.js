@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
 import SearchForm from "../components/SearchForm";
@@ -23,6 +24,9 @@ const Home = () => {
 
   return (
     <div className="Home">
+      <Helmet>
+        <title>Home | Giffy</title>
+      </Helmet>
       <section className="Home-container">
         <article>
           <SearchForm onSubmit={handleSubmit}></SearchForm>

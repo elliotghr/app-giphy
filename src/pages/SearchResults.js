@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
 import Spinner from "../components/Spinner";
 import useGifs from "../hooks/useGifs";
 import useNearScreen from "../hooks/useNearScreen";
-import useTitle from "../hooks/useSEO";
+// import useTitle from "../hooks/useSEO";
 // import debounce from "just-debounce-it";
 
 const SearchResults = () => {
@@ -13,7 +14,7 @@ const SearchResults = () => {
   const { isNearScreen, lazyElement } = useNearScreen("10px", false);
   // const debounceHandleNextPage = useRef();
   const title = gifs ? `${gifs.length} resultados de ${keyword}` : "";
-  useTitle({ title });
+  // useTitle({ title });
 
   const handleNextPage = useCallback(() => {
     setPage((prevPage) => prevPage + 1);
@@ -38,6 +39,10 @@ const SearchResults = () => {
         <Spinner></Spinner>
       ) : (
         <>
+          <Helmet>
+            <title>{title}</title>
+            <meta name="description" content={title}></meta>
+          </Helmet>
           <h3>{keyword}</h3>
           <ListOfGifs gifs={gifs}></ListOfGifs>
           {/* Creamos un punto de referencia para detectar el final y hacer el scroll infinito */}
