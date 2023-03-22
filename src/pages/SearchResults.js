@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
+import SearchForm from "../components/SearchForm";
 import Spinner from "../components/Spinner";
 import useGifs from "../hooks/useGifs";
 import useNearScreen from "../hooks/useNearScreen";
@@ -39,6 +40,9 @@ const SearchResults = () => {
         <Spinner></Spinner>
       ) : (
         <>
+          <article>
+            <SearchForm></SearchForm>
+          </article>
           <Helmet>
             <title>{title}</title>
             <meta name="description" content={title}></meta>

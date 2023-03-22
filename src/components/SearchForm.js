@@ -1,11 +1,14 @@
 import React, { memo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = ({ onSubmit }) => {
   let [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ keyword });
+    navigate(`/search/${keyword}`);
+
   };
   const handleChange = (e) => {
     setKeyword(e.target.value);

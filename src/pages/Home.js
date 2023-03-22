@@ -1,6 +1,4 @@
-import React, { useCallback } from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom";
 import ListOfGifs from "../components/ListOfGifs";
 import SearchForm from "../components/SearchForm";
 import LazyTrending from "../components/TrendigSearches";
@@ -11,16 +9,7 @@ import "./Home.css";
 // const POPULAR_GIFS = ["Morty", "Spiderman", "Cookie Monster", "Bayern Munchen"];
 
 const Home = () => {
-  const navigate = useNavigate();
   const { gifs } = useGifs();
-
-  // Hacemos uso de useCallback para evitar que se creé en cada renderizado
-  const handleSubmit = useCallback(
-    ({ keyword }) => {
-      navigate(`/search/${keyword}`);
-    },
-    [navigate]
-  );
 
   return (
     <div className="Home">
@@ -29,7 +18,7 @@ const Home = () => {
       </Helmet>
       <section className="Home-container">
         <article>
-          <SearchForm onSubmit={handleSubmit}></SearchForm>
+          <SearchForm ></SearchForm>
         </article>
         <article className="list-of-gifs">
           <h3>Última busqueda </h3>
